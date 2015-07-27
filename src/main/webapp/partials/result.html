@@ -1,22 +1,30 @@
 <div class="container">
 	<div data-ng-init="simulationResult()" class="row">
-		<div class="col-md-8 col-md-offset-1">
+		<div class="col-md-8">
 		    <h2>Results</h2>
 		</div>
-		<div class="col-md-8 col-md-offset-1">
-			<p><strong>{{result.differentNums}}</strong> different numbers have been generated.</p>
+		<div class="row">
+			<div class="col-md-6">
+				<p><strong>{{result.differentNums}}</strong> different numbers have been generated.</p>
+			</div>
+			<div class="col-md-6" >
+				<p>Execution time: <strong>{{result.executionTime}}ms</strong></p><canvas id="barChart" height="300" width="150"></canvas>
+			</div>
 		</div>
-		<div class="col-md-6" >
-			<canvas id="pieChart" width="400" height="400"></canvas>
+		<div class="row">
+			<div class="col-md-5">
+				<p>The most frequent number is <strong>{{result.mostFrequent}}</strong></p>
+			</div>
+			<div class="col-md-7" >
+				<p>The <strong>percentage</strong> of each number occurrence: </p>
+				<canvas id="pieChart" width="300" height="300"></canvas>
+			</div>
 		</div>
-		<div class="col-md-6" >
-			<canvas class="col-md-8" id="barChart" width="200" height="300"></canvas>
-		</div>
-		<div class="col-md-6" >
-			<canvas class="col-md-8" id="mfBarChart" width="1000" height="500"></canvas>
-		</div>
-		<div class="col-md-8 col-md-offset-1">
-			<p>Most frequent number is <strong>{{result.mostFrequent}}</strong></p>
+		<div class="row">
+			<div class="col-md-12" >
+				<p>The <strong>occurrence</strong> of each number: </p>
+				<canvas id="mfBarChart" width="800" height="350"></canvas>
+			</div>
 		</div>
 	</div>
 </div>

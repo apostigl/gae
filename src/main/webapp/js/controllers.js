@@ -115,6 +115,8 @@ simulationApp.controllers.controller('RootCtrl', function ($scope, $location, oa
      */
     $scope.collapseNavbar = function () {
         angular.element(document.querySelector('.navbar-collapse')).removeClass('in');
+        
+        //$scope.rootMessages = '';
     };
     
 });
@@ -253,7 +255,7 @@ simulationApp.controllers.controller('SimulationResultCtrl', function ($scope, $
 		     dataPie.push(obj);
 		}
 		 
-		var myPieChart = new Chart(ctxPie).Pie(dataPie,{ animation: true, animationSteps: 20, animationEasing: "easeInBounce",tooltipFontSize: 15,tooltipTemplate: "<%if (label){%><%=label%>- <%}%><%= value %>%"});
+		var myPieChart = new Chart(ctxPie).Pie(dataPie,{ animation: true, animationSteps: 20, animationEasing: "easeInBounce",tooltipFontSize: 15,tooltipTemplate: "<%if (label){%><%=label%> - <%}%><%= value %>%"});
 		 
  /**
   * END OF PIE CHART - OCCURENCE
@@ -268,7 +270,7 @@ simulationApp.controllers.controller('SimulationResultCtrl', function ($scope, $
 		 var executionTime =  $scope.$root.result.executionTime;
 		 
 		 var dataBar = {
-				    labels: ["Execution Time"],
+				    labels: [],
 				    datasets: [
 				        {
 				            fillColor: "rgba(220,220,220,0.5)",
@@ -331,11 +333,13 @@ simulationApp.controllers.controller('SimulationResultCtrl', function ($scope, $
  * The Log Controller for display log information in a webpage
  */
 
-simulationApp.controllers.controller('LogCtrl', function ($scope, $location, $log) {
+simulationApp.controllers.controller('LogCtrl', function ($scope, $location, $http) {
 	/**
-     * The function called when the log page is displayed.
+     * Called when the log page is displayed. Use a dedicated servlet call to retrieve logs info.
      */
-    $scope.viewLog = function () {
-        	angular.element(document.getElementById('log')).append($log);
+    $scope.displayLog = function (url) {
+    	$http.get(url).success(function(data) {
+    		 angular.element(document.querySelector('#log')).html(data);
+    	});
    }
 });

@@ -245,7 +245,7 @@ public class SimulationApi {
     		throw new LoginInvalidException("User is not valid");
     	}
     	
-    	log.info("User" + user.getUsername() + " logged in !");
+    	log.info("User " + user.getUsername() + " logged in !");
     	
     	return user;
     }
