@@ -13,10 +13,7 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 
 /**
- * Servlet responsible for query the GAE log DB using the Logs API and display it on the webpage.
- * 
- * It is also possible to access the logs in the Logs Viewer (Google Developers Console) by 
- * clicking Monitoring > Logs in the left navigation panel
+ * Servlet responsible for querying the GAE log (using the Logs API) and display it on the webpage.
  * 
  * @author Angelo
  *
@@ -67,7 +64,6 @@ public class LogServlet extends HttpServlet {
 	        writer.println("<br />Level: "+appLog.getLogLevel()+"<br />");
 	        writer.println("Message: "+ appLog.getLogMessage()+"<br /> <br />");
 	      }
-	      
 	    }
 	  }
 }
